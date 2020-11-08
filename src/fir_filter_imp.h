@@ -11,15 +11,6 @@ namespace libdsp
         fir_filter_cc(int decimation, const std::vector<float> &taps);
         ~fir_filter_cc();
 
-        // Disallow copy.
-        //
-        // This prevents accidentally doing needless copies, not just of fir_filter_cc,
-        // but every block that contains one.
-        fir_filter_cc(const fir_filter_cc &) = delete;
-        fir_filter_cc(fir_filter_cc &&) = default;
-        fir_filter_cc &operator=(const fir_filter_cc &) = delete;
-        fir_filter_cc &operator=(fir_filter_cc &&) = default;
-
         void set_taps(const std::vector<float> &taps);
         void update_tap(float t, unsigned int index);
         std::vector<float> taps() const;
@@ -46,15 +37,6 @@ namespace libdsp
     public:
         fir_filter_ff(int decimation, const std::vector<float> &taps);
         ~fir_filter_ff();
-
-        // Disallow copy.
-        //
-        // This prevents accidentally doing needless copies, not just of fir_filter,
-        // but every block that contains one.
-        fir_filter_ff(const fir_filter_ff &) = delete;
-        fir_filter_ff(fir_filter_ff &&) = default;
-        fir_filter_ff &operator=(const fir_filter_ff &) = delete;
-        fir_filter_ff &operator=(fir_filter_ff &&) = default;
 
         void set_taps(const std::vector<float> &taps);
         void update_tap(float t, unsigned int index);
