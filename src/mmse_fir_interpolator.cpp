@@ -3,9 +3,9 @@
 
 namespace libdsp
 {
-    std::vector<fir_filter_cc> build_filters_cc()
+    std::vector<fir_filter_ccf> build_filters_cc()
     {
-        std::vector<fir_filter_cc> filters;
+        std::vector<fir_filter_ccf> filters;
         filters.reserve(NSTEPS + 1);
         for (int i = 0; i < NSTEPS + 1; i++)
         {
@@ -15,9 +15,9 @@ namespace libdsp
         return filters;
     }
 
-    std::vector<fir_filter_ff> build_filters_ff()
+    std::vector<fir_filter_fff> build_filters_ff()
     {
-        std::vector<fir_filter_ff> filters;
+        std::vector<fir_filter_fff> filters;
         filters.reserve(NSTEPS + 1);
         for (int i = 0; i < NSTEPS + 1; i++)
         {
@@ -41,7 +41,7 @@ namespace libdsp
 
         if ((imu < 0) || (imu > NSTEPS))
         {
-            throw std::runtime_error("mmse_fir_interpolator_cc: imu out of bounds. " + std::to_string(mu));
+            throw std::runtime_error("mmse_fir_interpolator_ccf: imu out of bounds. " + std::to_string(mu));
         }
 
         std::complex<float> r = filters[imu].filter(input);
@@ -62,7 +62,7 @@ namespace libdsp
 
         if ((imu < 0) || (imu > NSTEPS))
         {
-            throw std::runtime_error("mmse_fir_interpolator_ff: imu out of bounds. " + std::to_string(mu));
+            throw std::runtime_error("mmse_fir_interpolator_fff: imu out of bounds. " + std::to_string(mu));
         }
 
         float r = filters[imu].filter(input);

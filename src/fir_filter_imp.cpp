@@ -4,18 +4,18 @@
 
 namespace libdsp
 {
-    fir_filter_cc::fir_filter_cc(int decimation, const std::vector<float> &taps) : d_output(1)
+    fir_filter_ccf::fir_filter_ccf(int decimation, const std::vector<float> &taps) : d_output(1)
     {
         d_align = 1; //volk_get_alignment();
         d_naligned = std::max((size_t)1, d_align / sizeof(std::complex<float>));
         set_taps(taps);
     }
 
-    fir_filter_cc::~fir_filter_cc()
+    fir_filter_ccf::~fir_filter_ccf()
     {
     }
 
-    void fir_filter_cc::set_taps(const std::vector<float> &taps)
+    void fir_filter_ccf::set_taps(const std::vector<float> &taps)
     {
         d_ntaps = (int)taps.size();
         d_taps = taps;
@@ -31,7 +31,7 @@ namespace libdsp
         }
     }
 
-    void fir_filter_cc::update_tap(float t, unsigned int index)
+    void fir_filter_ccf::update_tap(float t, unsigned int index)
     {
         d_taps[index] = t;
         for (int i = 0; i < d_naligned; i++)
@@ -40,19 +40,19 @@ namespace libdsp
         }
     }
 
-    std::vector<float> fir_filter_cc::taps() const
+    std::vector<float> fir_filter_ccf::taps() const
     {
         std::vector<float> t = d_taps;
         std::reverse(t.begin(), t.end());
         return t;
     }
 
-    unsigned int fir_filter_cc::ntaps() const
+    unsigned int fir_filter_ccf::ntaps() const
     {
         return d_ntaps;
     }
 
-    std::complex<float> fir_filter_cc::filter(const std::complex<float> input[]) const
+    std::complex<float> fir_filter_ccf::filter(const std::complex<float> input[]) const
     {
         const std::complex<float> *ar = (std::complex<float> *)((size_t)input & ~(d_align - 1));
         unsigned al = input - ar;
@@ -61,7 +61,7 @@ namespace libdsp
         return d_output[0];
     }
 
-    void fir_filter_cc::filterN(std::complex<float> output[], const std::complex<float> input[], unsigned long n)
+    void fir_filter_ccf::filterN(std::complex<float> output[], const std::complex<float> input[], unsigned long n)
     {
         for (unsigned long i = 0; i < n; i++)
         {
@@ -69,7 +69,7 @@ namespace libdsp
         }
     }
 
-    void fir_filter_cc::filterNdec(std::complex<float> output[], const std::complex<float> input[], unsigned long n, unsigned int decimate)
+    void fir_filter_ccf::filterNdec(std::complex<float> output[], const std::complex<float> input[], unsigned long n, unsigned int decimate)
     {
         unsigned long j = 0;
         for (unsigned long i = 0; i < n; i++)
@@ -79,18 +79,18 @@ namespace libdsp
         }
     }
 
-    fir_filter_ff::fir_filter_ff(int decimation, const std::vector<float> &taps) : d_output(1)
+    fir_filter_fff::fir_filter_fff(int decimation, const std::vector<float> &taps) : d_output(1)
     {
         d_align = 1; //volk_get_alignment();
         d_naligned = std::max((size_t)1, d_align / sizeof(float));
         set_taps(taps);
     }
 
-    fir_filter_ff::~fir_filter_ff()
+    fir_filter_fff::~fir_filter_fff()
     {
     }
 
-    void fir_filter_ff::set_taps(const std::vector<float> &taps)
+    void fir_filter_fff::set_taps(const std::vector<float> &taps)
     {
         d_ntaps = (int)taps.size();
         d_taps = taps;
@@ -106,7 +106,7 @@ namespace libdsp
         }
     }
 
-    void fir_filter_ff::update_tap(float t, unsigned int index)
+    void fir_filter_fff::update_tap(float t, unsigned int index)
     {
         d_taps[index] = t;
         for (int i = 0; i < d_naligned; i++)
@@ -115,19 +115,19 @@ namespace libdsp
         }
     }
 
-    std::vector<float> fir_filter_ff::taps() const
+    std::vector<float> fir_filter_fff::taps() const
     {
         std::vector<float> t = d_taps;
         std::reverse(t.begin(), t.end());
         return t;
     }
 
-    unsigned int fir_filter_ff::ntaps() const
+    unsigned int fir_filter_fff::ntaps() const
     {
         return d_ntaps;
     }
 
-    float fir_filter_ff::filter(const float input[]) const
+    float fir_filter_fff::filter(const float input[]) const
     {
         const float *ar = (float *)((size_t)input & ~(d_align - 1));
         unsigned al = input - ar;
@@ -136,7 +136,7 @@ namespace libdsp
         return d_output[0];
     }
 
-    void fir_filter_ff::filterN(float output[], const float input[], unsigned long n)
+    void fir_filter_fff::filterN(float output[], const float input[], unsigned long n)
     {
         for (unsigned long i = 0; i < n; i++)
         {
@@ -144,7 +144,7 @@ namespace libdsp
         }
     }
 
-    void fir_filter_ff::filterNdec(float output[], const float input[], unsigned long n, unsigned int decimate)
+    void fir_filter_fff::filterNdec(float output[], const float input[], unsigned long n, unsigned int decimate)
     {
         unsigned long j = 0;
         for (unsigned long i = 0; i < n; i++)

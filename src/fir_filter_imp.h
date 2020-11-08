@@ -5,11 +5,11 @@
 
 namespace libdsp
 {
-    class fir_filter_cc
+    class fir_filter_ccf
     {
     public:
-        fir_filter_cc(int decimation, const std::vector<float> &taps);
-        ~fir_filter_cc();
+        fir_filter_ccf(int decimation, const std::vector<float> &taps);
+        ~fir_filter_ccf();
 
         void set_taps(const std::vector<float> &taps);
         void update_tap(float t, unsigned int index);
@@ -32,11 +32,11 @@ namespace libdsp
         int d_naligned;
     };
 
-    class fir_filter_ff
+    class fir_filter_fff
     {
     public:
-        fir_filter_ff(int decimation, const std::vector<float> &taps);
-        ~fir_filter_ff();
+        fir_filter_fff(int decimation, const std::vector<float> &taps);
+        ~fir_filter_fff();
 
         void set_taps(const std::vector<float> &taps);
         void update_tap(float t, unsigned int index);

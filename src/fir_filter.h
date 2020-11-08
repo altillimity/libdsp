@@ -4,18 +4,18 @@
 
 namespace libdsp
 {
-    class FIRFilterCC
+    class FIRFilterCCF
     {
     private:
-        fir_filter_cc *d_fir;
+        fir_filter_ccf *d_fir;
         bool d_updated;
         int decimation_m;
         std::vector<std::complex<float>> tmp_;
 
     public:
-        FIRFilterCC(int decimation, const std::vector<float> &taps);
+        FIRFilterCCF(int decimation, const std::vector<float> &taps);
 
-        ~FIRFilterCC();
+        ~FIRFilterCCF();
 
         void set_taps(const std::vector<float> &taps);
         std::vector<float> taps() const;

@@ -27,7 +27,7 @@ namespace libdsp
         std::complex<float> interpolate(const std::complex<float> input[], float mu) const;
 
     protected:
-        const std::vector<fir_filter_cc> filters;
+        const std::vector<fir_filter_ccf> filters;
     };
 
     class mmse_fir_interpolator_ff
@@ -53,6 +53,6 @@ namespace libdsp
         float interpolate(const float input[], float mu) const;
 
     protected:
-        const std::vector<fir_filter_ff> filters;
+        const std::vector<fir_filter_fff> filters;
     };
 } // namespace libdsp

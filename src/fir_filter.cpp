@@ -2,32 +2,32 @@
 
 namespace libdsp
 {
-    FIRFilterCC::FIRFilterCC(int decimation, const std::vector<float> &taps)
+    FIRFilterCCF::FIRFilterCCF(int decimation, const std::vector<float> &taps)
     {
-        d_fir = new fir_filter_cc(decimation, taps);
+        d_fir = new fir_filter_ccf(decimation, taps);
         d_updated = false;
         decimation_m = decimation;
 
         const int alignment_multiple = 1 / sizeof(float);
     }
 
-    FIRFilterCC::~FIRFilterCC()
+    FIRFilterCCF::~FIRFilterCCF()
     {
         delete d_fir;
     }
 
-    void FIRFilterCC::set_taps(const std::vector<float> &taps)
+    void FIRFilterCCF::set_taps(const std::vector<float> &taps)
     {
         d_fir->set_taps(taps);
         d_updated = true;
     }
 
-    std::vector<float> FIRFilterCC::taps() const
+    std::vector<float> FIRFilterCCF::taps() const
     {
         return d_fir->taps();
     }
 
-    size_t FIRFilterCC::work(std::complex<float> *in, size_t length, std::complex<float> *out)
+    size_t FIRFilterCCF::work(std::complex<float> *in, size_t length, std::complex<float> *out)
     {
         tmp_.insert(tmp_.end(), in, &in[length]);
 
