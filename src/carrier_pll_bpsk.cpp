@@ -15,7 +15,11 @@ namespace libdsp
         return phase;
     }
 
-    BPSKCarrierPLL::BPSKCarrierPLL(float alpha, float beta, float max_offset)
+    BPSKCarrierPLL::BPSKCarrierPLL(float alpha, float beta, float max_offset) : d_alpha(alpha),
+                                                                                d_beta(beta),
+                                                                                d_max_offset(max_offset),
+                                                                                d_phase(0.0),
+                                                                                d_freq(0.0)
     {
     }
 
