@@ -9,12 +9,14 @@ All "blocks" use a similar work function, taking an input and output buffer + th
 **All credits goes to the GNU Radio and VOLK project.**
 
 ### Features
-Currently this library contains the following "blocks" or functions (CC = Complex Float, FF = Float) :
+Currently this library contains the following "blocks" or functions (C = Complex Float, F = Float, 1st is input type 2nd output) :
 - AGC, CC
 - DC Blocker, CC
 - Costas Loop, CC
 - Clock Recovery MM, CC and FF
 - Moving Average, CC and FF
+- BPSK Carrier PLL (NOAA HRPT PLL), CF
+- Complex to Real, CF
 - Root-Raised Cosine FIR generating fuction
 - MMSE FIR Interpolator (required by the clock recovery), CC and FF
 - Noise Source, CC and FF
