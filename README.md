@@ -17,11 +17,13 @@ Currently this library contains the following "blocks" or functions (C = Complex
 - Moving Average, CC and FF
 - BPSK Carrier PLL (NOAA HRPT PLL), CF
 - Complex to Real, CF
+- Quadrature Demod, CF
 - Root-Raised Cosine FIR generating fuction
 - MMSE FIR Interpolator (required by the clock recovery), CC and FF
 - Noise Source, CC and FF
 - Random number generator (used by the Noise Source)
 - Various utils functions from VOLK and GNU Radio
+- A simple generic FIFO implementation (pipe.h), utilizing OS functions
 
 ### Building
 This project uses CMake, so all you need to do is those commands :

@@ -71,4 +71,17 @@ namespace libdsp
 
         *result = dotProduct;
     }
+
+    void volk_32fc_x2_multiply_conjugate_32fc_generic(std::complex<float> *cVector, const std::complex<float> *aVector, const std::complex<float> *bVector, unsigned int num_points)
+    {
+        std::complex<float> *cPtr = cVector;
+        const std::complex<float> *aPtr = aVector;
+        const std::complex<float> *bPtr = bVector;
+        unsigned int number = 0;
+
+        for (number = 0; number < num_points; number++)
+        {
+            *cPtr++ = (*aPtr++) * conj(*bPtr++);
+        }
+    }
 } // namespace libdsp
