@@ -18,6 +18,7 @@ Currently this library contains the following "blocks" or functions (C = Complex
 - BPSK Carrier PLL (NOAA HRPT PLL), CF
 - Complex to Real, CF
 - Quadrature Demod, CF
+- Rational Resampler, CCF
 - Root-Raised Cosine FIR generating fuction
 - MMSE FIR Interpolator (required by the clock recovery), CC and FF
 - Noise Source, CC and FF

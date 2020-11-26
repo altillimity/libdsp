@@ -1,3 +1,5 @@
+#pragma once
+
 #include <complex>
 
 /* Based on the Costas Loop from GNU Radio (https://github.com/gnuradio/gnuradio) */
