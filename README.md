@@ -18,11 +18,13 @@ Currently this library contains the following "blocks" or functions (C = Complex
 - BPSK Carrier PLL (NOAA HRPT PLL), CF
 - Complex to Real, CF
 - Quadrature Demod, CF
-- Rational Resampler, CCF
+- Rational Resampler, CCF and its low-pass FIR generator function
 - Root-Raised Cosine FIR generating fuction
+- Low-pass FIR generating fuction
 - MMSE FIR Interpolator (required by the clock recovery), CC and FF
 - Noise Source, CC and FF
 - Random number generator (used by the Noise Source)
+- FFT Window generators
 - Various utils functions from VOLK and GNU Radio
 - A simple generic FIFO implementation (pipe.h), utilizing OS functions
 

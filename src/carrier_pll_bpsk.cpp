@@ -31,7 +31,6 @@ namespace libdsp
     {
         for (int i = 0; i < length; i++)
         {
-
             // Generate and mix out carrier
             float re, im;
             sincosf(d_phase, &im, &re);

@@ -156,6 +156,15 @@ namespace libdsp
 
     size_t MovingAverageFF::work(float *in, size_t length, float *out)
     {
+        if (d_updated)
+        {
+            d_length = d_new_length;
+            d_scale = d_new_scale;
+            std::fill(std::begin(d_scales), std::end(d_scales), d_scale);
+            d_history = d_length;
+            d_updated = false;
+        }
+
         tmp_.insert(tmp_.end(), in, &in[length]);
 
         const unsigned int num_iter = std::min((int)tmp_.size(), d_max_iter);
