@@ -1,5 +1,6 @@
 #include "carrier_pll_psk.h"
 #include "utils.h"
+#include "math/math.h"
 
 #define M_TWOPI (2 * M_PI)
 
@@ -37,7 +38,7 @@ namespace libdsp
             out[i] = (in[i] * std::complex<float>(re, -im)).imag();
 
             // Adjust PLL phase/frequency
-            float error = phase_wrap(atan2f(in[i].imag(), in[i].real()) - d_phase);
+            float error = phase_wrap(fast_atan2f(in[i].imag(), in[i].real()) - d_phase);
             d_freq = branchless_clip(d_freq + error * d_beta, d_max_offset);
             d_phase = phase_wrap(d_phase + error * d_alpha + d_freq);
         }

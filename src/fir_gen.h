@@ -46,6 +46,9 @@ namespace libdsp
                            double alpha,       // Excess Bandwidth Factor
                            int ntaps);
 
+        // Hilbert transform
+        std::vector<float> hilbert(unsigned int ntaps, fft::window::win_type windowtype, double beta);
+
         /**
     * @brief Given the interpolation rate, decimation rate and a fractional bandwidth,
      design a set of taps.

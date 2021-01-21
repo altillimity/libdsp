@@ -16,13 +16,17 @@ Currently this library contains the following "blocks" or functions (C = Complex
 - Clock Recovery MM, CC and FF
 - Moving Average, CC and FF
 - BPSK Carrier PLL (NOAA HRPT PLL), CF
+- PLL Carrier Tracking, CC
 - Complex to Real, CF
+- Complex to Arg, CF
 - Quadrature Demod, CF
+- Hilbert Transform, FC
 - Rational Resampler, CCF and its low-pass FIR generator function
 - Root-Raised Cosine FIR generating fuction
 - Low-pass FIR generating fuction
 - MMSE FIR Interpolator (required by the clock recovery), CC and FF
 - Noise Source, CC and FF
+- Signal Source, CC
 - Random number generator (used by the Noise Source)
 - FFT Window generators
 - Various utils functions from VOLK and GNU Radio

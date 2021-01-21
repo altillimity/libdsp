@@ -131,6 +131,38 @@ namespace libdsp
             return taps;
         }
 
+        //
+        // Hilbert Transform
+        //
+
+        std::vector<float> hilbert(unsigned int ntaps, fft::window::win_type windowtype, double beta)
+        {
+            if (!(ntaps & 1))
+                throw std::out_of_range("Hilbert:  Must have odd number of taps");
+
+            std::vector<float> taps(ntaps);
+            std::vector<float> w = window(windowtype, ntaps, beta);
+            unsigned int h = (ntaps - 1) / 2;
+            float gain = 0;
+            for (unsigned int i = 1; i <= h; i++)
+            {
+                if (i & 1)
+                {
+                    float x = 1 / (float)i;
+                    taps[h + i] = x * w[h + i];
+                    taps[h - i] = -x * w[h - i];
+                    gain = taps[h + i] - gain;
+                }
+                else
+                    taps[h + i] = taps[h - i] = 0;
+            }
+
+            gain = 2 * fabs(gain);
+            for (unsigned int i = 0; i < ntaps; i++)
+                taps[i] /= gain;
+            return taps;
+        }
+
         std::vector<float> design_resampler_filter_float(const unsigned interpolation, const unsigned decimation, const float fractional_bw)
         {
 

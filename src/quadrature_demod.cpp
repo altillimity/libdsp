@@ -1,6 +1,7 @@
 #include "quadrature_demod.h"
 #include <vector>
 #include "utils.h"
+#include "math/math.h"
 
 namespace libdsp
 {
@@ -18,7 +19,7 @@ namespace libdsp
         volk_32fc_x2_multiply_conjugate_32fc_generic(&tmp[0], &in[1], &in[0], length);
         for (int i = 0; i < length; i++)
         {
-            out[i] = d_gain * atan2f(imag(tmp[i]), real(tmp[i]));
+            out[i] = d_gain * fast_atan2f(imag(tmp[i]), real(tmp[i]));
         }
 
         return length;
