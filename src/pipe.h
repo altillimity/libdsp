@@ -20,6 +20,7 @@ namespace libdsp
         // Util values
         int read_cnt;
         int read_tries;
+        bool detroyed = false;
 
     public:
         // The buffer size is only used on Windows currently
@@ -34,10 +35,15 @@ namespace libdsp
         // Close everything
         ~Pipe()
         {
-            if (fifo_handles[1])
-                close(fifo_handles[1]);
-            if (fifo_handles[0])
-                close(fifo_handles[0]);
+            if (!detroyed)
+            {
+                if (fifo_handles[1])
+                    close(fifo_handles[1]);
+                if (fifo_handles[0])
+                    close(fifo_handles[0]);
+            }
+
+            detroyed = true;
         }
         // Push x samples into the fifo
         void push(T *buffer, int size)
