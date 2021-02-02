@@ -26,7 +26,7 @@ namespace libdsp
         Pipe(int buffer_size = 4096)
         {
 #ifdef _WIN32
-            _pipe(fifo_handles, buffer_size * 10 * sizeof(std::complex<float>), _O_BINARY);
+            _pipe(fifo_handles, buffer_size * 10 * sizeof(std::complex<float>), 'b');
 #else
             pipe(fifo_handles);
 #endif
