@@ -29,6 +29,9 @@ namespace libdsp
     {
         tmp_.insert(tmp_.end(), in, &in[length]);
 
+        if (tmp_.size() <= d_fir->ntaps())
+            return 0;
+
         size_t process_size = tmp_.size() - d_fir->ntaps();
 
         if (decimation_m == 1)
@@ -67,6 +70,9 @@ namespace libdsp
     size_t FIRFilterFFF::work(float *in, size_t length, float *out)
     {
         tmp_.insert(tmp_.end(), in, &in[length]);
+
+        if (tmp_.size() <= d_fir->ntaps())
+            return 0;
 
         size_t process_size = tmp_.size() - d_fir->ntaps();
 
