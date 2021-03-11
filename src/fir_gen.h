@@ -22,7 +22,7 @@ namespace libdsp
      * \param window              one of fft::window::win_type
      * \param beta                parameter for Kaiser window
      */
-        static std::vector<float>
+        std::vector<float>
         low_pass(double gain,
                  double sampling_freq,
                  double cutoff_freq,      // Hz center of transition band

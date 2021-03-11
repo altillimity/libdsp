@@ -36,12 +36,13 @@ namespace libdsp
             return fft::window::build(type, ntaps, beta);
         }
 
-        std::vector<float> low_pass(double gain,
-                                    double sampling_freq,
-                                    double cutoff_freq,      // Hz center of transition band
-                                    double transition_width, // Hz width of transition band
-                                    fft::window::win_type window_type,
-                                    double beta) // used only with Kaiser
+        std::vector<float>
+        low_pass(double gain,
+                 double sampling_freq,
+                 double cutoff_freq,      // Hz center of transition band
+                 double transition_width, // Hz width of transition band
+                 fft::window::win_type window_type,
+                 double beta) // used only with Kaiser
         {
             sanity_check_1f(sampling_freq, cutoff_freq, transition_width);
 

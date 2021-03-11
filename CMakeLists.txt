@@ -1,11 +1,11 @@
 cmake_minimum_required(VERSION 3.1)
 set(CMAKE_CXX_STANDARD 11)
 
-if(NOT MINGW AND NOT WIN32 AND NOT MINGW64)
-    set(CMAKE_CXX_FLAGS "-Wall -Wextra")
-    set(CMAKE_CXX_FLAGS_DEBUG "-g")
-    set(CMAKE_CXX_FLAGS_RELEASE "-O3")
-endif()
+#if(NOT MINGW AND NOT WIN32 AND NOT MINGW64)
+#    set(CMAKE_CXX_FLAGS "-Wall -Wextra")
+#    set(CMAKE_CXX_FLAGS_DEBUG "-g")
+#    set(CMAKE_CXX_FLAGS_RELEASE "-O3")
+#endif()
 
 project (libdsp VERSION 1.0)
 
