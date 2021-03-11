@@ -9,6 +9,14 @@ set(CMAKE_CXX_STANDARD 11)
 
 project (libdsp VERSION 1.0)
 
+if(MSVC)
+    # Needed for M_PI macro
+    add_definitions(-D_USE_MATH_DEFINES)
+    # Export all symbols in DLL - Could use __declspec(dllexport) if need to be
+    # more selective
+    set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+endif()
+
 file(GLOB_RECURSE DSP_CPPS src/*.cpp)
 
 add_library(dsp SHARED ${DSP_CPPS})
